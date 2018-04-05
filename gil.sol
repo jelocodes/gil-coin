@@ -15,4 +15,14 @@ contract Gil {
         owner = msg.sender;
     }
     
+    function create() payable {
+        //require(msg.sender == owner); 
+        //we only want the owner to be able to create new coins
+        //actually scratch that we may want ANYONE to create tokens if they pay so...
+        
+        require(msg.value > 0 && msg.value % PRICE == 0) //we want to make sure creator is sending SOME money
+        // we also want to make sure the amount of wei that is being sent is a denomination of the PRICE
+        balances[msg.sender] += (msg.value / PRICE); //keeping track of balance in mapping
+    }   
+     
 }
