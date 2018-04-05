@@ -1,2 +1,2 @@
 # gil-coin
-Test token contract for practice/demo purposes
+Test token smart contract for practice/demo purposes
