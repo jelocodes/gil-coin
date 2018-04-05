@@ -23,6 +23,12 @@ contract Gil {
         require(msg.value > 0 && msg.value % PRICE == 0) //we want to make sure creator is sending SOME money
         // we also want to make sure the amount of wei that is being sent is a denomination of the PRICE
         balances[msg.sender] += (msg.value / PRICE); //keeping track of balance in mapping
-    }   
+    }
+    
+    function transfer(address receiver, uint amount) {
+        require(balances[msg.sender] >= amount); //we have to make sure you have enough to sender
+        balances[msg.sender] -= amount;
+        balances[receiver] += amount;
+    }
      
 }
